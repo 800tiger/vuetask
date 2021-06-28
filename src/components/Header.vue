@@ -1,7 +1,10 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <TopButton text="Add Task" color="green"/>
+        <TopButton 
+        @bt-click="$emit('toggle-new-task')" 
+        :text="show ? 'Close' : 'Add Task'" 
+        :color="show ? 'red' : 'green'"/>
     </header>
 </template>
 
@@ -15,11 +18,13 @@ export default {
         title:{
             type: String,
             default: 'Hello Task'
-        }
+        },
+        show:Boolean
     },
     components:{
         TopButton
-    }    
+    },
+    emit:['toggle-new-task']    
 }
 </script>
 

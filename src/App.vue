@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
-    <TaskForm @add-task="addTask" />
+    <Header @toggle-new-task="toggleNewTask" title="Task Tracker" :show="show"/>
+    <TaskForm v-show="show" @add-task="addTask"/>
     <Tasks 
         @toggle-task="toggleTask" 
         @delete-task="deleteTask"
@@ -25,10 +25,14 @@ export default {
   },
   data(){
     return {
+      show: false,
       tasks: []
     }
   },
   methods:{
+    addTask(task){
+      this.tasks = [...this.tasks,task]  
+    },
     deleteTask(id){
       if(confirm('Are you sure?')){
         this.tasks = this.tasks.filter((task)=> task.id !== id )
@@ -38,8 +42,8 @@ export default {
       const toggle = this.tasks.find(task=>task.id === id)
       toggle.reminder = !toggle.reminder
     },
-    addTask(task){
-      this.tasks = [...this.tasks,task]  
+    toggleNewTask(){
+      this.show = !this.show
     }
   },
   created(){
