@@ -2,7 +2,7 @@
     <div class="tasks">
         <h3>{{ title }}</h3>
         <div v-for="task in tasks" v-bind:key="task.id">
-            <Task :task="task"/>
+            <Task @toggle-task="$emit('toggle-task',task.id)" @delete-task="$emit('delete-task',task.id)" :task="task"/>
         </div>
     </div>
 </template>
@@ -18,7 +18,8 @@ export default {
     },
     components: {
         Task
-    }
+    },
+    emits:['delete-task','toggle-task']
 }
 </script>
 <style scoped>

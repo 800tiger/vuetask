@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
-    <Tasks title="Tasks list" :tasks="tasks" />
+    <Tasks 
+        @toggle-task="toggleTask" 
+        @delete-task="deleteTask" 
+        title="Tasks list" 
+        :tasks="tasks" />
   </div>
 </template>
 
@@ -19,6 +23,16 @@ export default {
   data(){
     return {
       tasks: []
+    }
+  },
+  methods:{
+    deleteTask(id){
+      if(confirm('Are you sure?')){
+        this.tasks = this.tasks.filter((task)=> task.id !== id )
+      }
+    },
+    toggleTask(id){
+      console.log(id)
     }
   },
   created(){

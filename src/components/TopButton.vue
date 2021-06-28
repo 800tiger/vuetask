@@ -1,5 +1,9 @@
 <template>
-      <button @click="addNewTask" :style="{ background: color }" class='btn'>{{ text }}</button>
+    <button 
+        @click="addNewTask" 
+        :style="{ background: color }" 
+        class='btn'>{{ text }}
+    </button>
 </template>
 
 <script>
