@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
+    <TaskForm @add-task="addTask" />
     <Tasks 
         @toggle-task="toggleTask" 
-        @delete-task="deleteTask" 
+        @delete-task="deleteTask"
         title="Tasks list" 
         :tasks="tasks" />
   </div>
@@ -13,12 +14,14 @@
 
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
+import TaskForm from './components/TaskForm.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks
+    Tasks,
+    TaskForm
   },
   data(){
     return {
@@ -32,7 +35,11 @@ export default {
       }
     },
     toggleTask(id){
-      console.log(id)
+      const toggle = this.tasks.find(task=>task.id === id)
+      toggle.reminder = !toggle.reminder
+    },
+    addTask(task){
+      this.tasks = [...this.tasks,task]  
     }
   },
   created(){
