@@ -30,42 +30,48 @@ export default {
     }
   },
   methods:{
-    addTask(task){
-      this.tasks = [...this.tasks,task]  
+    async addTask(task){
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(task)
+      }
+      const res = await fetch("api/tasks", requestOptions)
+      this.tasks = [...this.tasks,await res.json()]  
     },
-    deleteTask(id){
+    async deleteTask(id){
       if(confirm('Are you sure?')){
-        this.tasks = this.tasks.filter((task)=> task.id !== id )
+      const requestOptions = {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+      const res = await fetch(`api/tasks/${id}`,requestOptions)
+        res.status === 200 ? this.tasks = this.tasks.filter((task)=> task.id !== id ) : console.log('wrong')
       }
     },
-    toggleTask(id){
+    async toggleTask(id){
       const toggle = this.tasks.find(task=>task.id === id)
       toggle.reminder = !toggle.reminder
+      const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toggle)
+      }
+      await fetch(`api/tasks/${id}`,requestOptions)
+      //const toggle = this.tasks.find(task=>task.id === id)
+      //toggle.reminder = !toggle.reminder
     },
     toggleNewTask(){
       this.show = !this.show
+    },
+    async fetchTasks(){
+      const res = await fetch('api/tasks')
+      const result = await res.json()
+      return result
     }
   },
-  created(){
-    this.tasks =[
-      {
-        id:1,
-        text:'Go to school',
-        day: 'March 1st at 2:30pm',
-        reminder: false,
-      },
-      {
-        id:2,
-        text:'go to work',
-        day: 'March 3st at 3:30pm',
-        reminder: true,
-      },{
-        id:3,
-        text:'Have a dinner',
-        day: 'May 3st at 4:30pm',
-        reminder: true,
-      }
-    ]
+  async created(){
+    this.tasks = await this.fetchTasks()
   }
 }
 </script>
