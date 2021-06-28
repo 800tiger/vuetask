@@ -1,20 +1,46 @@
 <template>
   <div class="container">
-    <Header />
-    <TopButton />
+    <Header title="Task Tracker"/>
+    <Tasks title="Tasks list" :tasks="tasks" />
   </div>
 </template>
 
 <script>
 
-import TopButton from './components/TopButton.vue'
 import Header from './components/Header.vue'
+import Tasks from './components/Tasks.vue'
 
 export default {
   name: 'App',
   components: {
-    TopButton,
-    Header
+    Header,
+    Tasks
+  },
+  data(){
+    return {
+      tasks: []
+    }
+  },
+  created(){
+    this.tasks =[
+      {
+        id:1,
+        text:'Go to school',
+        day: 'March 1st at 2:30pm',
+        reminder: false,
+      },
+      {
+        id:2,
+        text:'go to work',
+        day: 'March 3st at 3:30pm',
+        reminder: true,
+      },{
+        id:3,
+        text:'Have a dinner',
+        day: 'May 3st at 4:30pm',
+        reminder: true,
+      }
+    ]
   }
 }
 </script>
