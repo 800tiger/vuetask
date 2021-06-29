@@ -24,4 +24,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### ADD new router
-See router/index.js
+See router/index.js, new commit will comming soon on origin branch
