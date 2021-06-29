@@ -7,6 +7,8 @@
         @delete-task="deleteTask"
         title="Tasks list" 
         :tasks="tasks" />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
@@ -15,13 +17,15 @@
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
 import TaskForm from './components/TaskForm.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     Tasks,
-    TaskForm
+    TaskForm,
+    Footer
   },
   data(){
     return {

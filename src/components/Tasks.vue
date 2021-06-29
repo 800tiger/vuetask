@@ -1,6 +1,5 @@
 <template>
     <div class="tasks">
-        <h3>{{ title }}</h3>
         <div v-for="task in tasks" v-bind:key="task.id">
             <Task @toggle-task="$emit('toggle-task',task.id)" @delete-task="$emit('delete-task',task.id)" :task="task"/>
         </div>

@@ -19,12 +19,6 @@
       "reminder": true
     },
     {
-      "id": 857,
-      "text": "go to school",
-      "day": "March 6st at 11:00am",
-      "reminder": true
-    },
-    {
       "id": 730,
       "text": "moring tea",
       "day": "March 6st at 11:30am",
@@ -35,6 +29,12 @@
       "day": "March 6st at 12:00am",
       "reminder": false,
       "id": 858
+    },
+    {
+      "text": "ttt",
+      "day": "March 6st at 9:00am",
+      "reminder": true,
+      "id": 859
     }
   ]
 }
