@@ -1,7 +1,7 @@
 <template>
   <form @submit="AddNewTask" class="add-form">
     <div class="form-control">
-      <label>Task</label>
+      <label>Task For test</label>
       <input v-model="text" type="text" name="text" placeholder="Add Task" />
     </div>
     <div class="form-control">
