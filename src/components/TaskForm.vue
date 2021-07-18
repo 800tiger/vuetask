@@ -14,7 +14,7 @@
       />
     </div>
     <div class="form-control form-control-check">
-      <label>Set Reminder</label>
+      <label>Set Reminder For test</label>
       <input v-model="reminder" type="checkbox" name="reminder" />
     </div>
 
